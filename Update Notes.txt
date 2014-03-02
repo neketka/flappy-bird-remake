@@ -1,0 +1,10 @@
+Update 1_Date:3/2/14_Editor:Nikita
+
+Added bird
+Added pipes
+Added unfinished store
+Added unfinished options
+Added coins
+Added info button
+Added gameplay
+Added file for saves
