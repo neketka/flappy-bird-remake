@@ -1,10 +1,12 @@
-Update 1_Date:3/2/14_Editor:Nikita
+update1_editor:nikita_date:3/2/14_time:1:13pm
 
-Added bird
 Added pipes
-Added unfinished store
-Added unfinished options
+Added bird
+Added death world
+Added main world
+Added start world
 Added coins
-Added info button
+Added incomplete features
 Added gameplay
-Added file for saves
+Added savefile
+Added in-code store data

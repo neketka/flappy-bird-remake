@@ -1,0 +1,4 @@
+#HIGHSCORE 0x0
+#BIRDPATH bird/bird.gif
+#COINS 0x0
+#ACTIVEGMDE 0x0
