@@ -16,16 +16,16 @@ public class gameDataExporter{
     final String coinss = "#COINS ";
     public void composeExport(int highscore,ArrayList<Integer> storeunlocks,ArrayList<Integer> activebuys,int activegamemode,String birdpath,int coins){
         ArrayList<String> file = new ArrayList<String>();
-        file.add(hscore+Integer.toOctalString(highscore));
+        file.add(hscore+"0x"+Integer.toHexString(highscore));
         for (int i : storeunlocks){
-            file.add(ulktstore+Integer.toOctalString(i));
+            file.add(ulktstore+"0x"+Integer.toHexString(i));
         }
         for (int i : activebuys){
-            file.add(activebuy+Integer.toOctalString(i));
+            file.add(activebuy+"0x"+Integer.toHexString(i));
         }
-        file.add(activegm+Integer.toOctalString(activegamemode));
+        file.add(activegm+"0x"+Integer.toHexString(activegamemode));
         file.add(chosenbrdpth+birdpath);
-        file.add(coinss+Integer.toOctalString(coins));
+        file.add(coinss+"0x"+Integer.toHexString(coins));
         writeToFile(file);
     }
     public void writeToFile(ArrayList<String> file){
