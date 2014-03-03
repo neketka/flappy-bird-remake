@@ -19,7 +19,7 @@ public class gameDataParser {
     //file vals
     int highScore = 0;
     int coins = 0;
-    String birdpath = "bird\\bird.gif";
+    String birdpath = "bird/bird.gif";
     int gamemode = 0;
     ArrayList<Integer> unlocked = new ArrayList<Integer>();
     ArrayList<Integer> selectedbuy = new ArrayList<Integer>();
