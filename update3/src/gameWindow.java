@@ -100,24 +100,33 @@ public class gameWindow implements ActionListener{
         bought.setSelectionModel(new DisabledItemSelectionModel());
         money = new JTextField("0 Coins");
         money.setEditable(false);
-        buy = new JButton("Buy selected");
+        buy = new JButton("Show description");
         buy.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ArrayList<String> stitems = new ArrayList<String>(Arrays.asList(parser.getStoreitems()));
                 int storeindex = stitems.indexOf(storelist.getSelectedValue());
+                if (storeindex == -1){
+                    JOptionPane.showMessageDialog(null,"Choose something!");
+                    return;
+                }
                 int cost = parser.getStoreCosts()[storeindex];
+                int reqlevel = parser.getLevelRequrements()[storeindex];
+                String description = parser.getDescriptions()[storeindex];
+                int option = JOptionPane.showConfirmDialog(null,description+"\n-----------------------------\n                 Buy?","Description",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+                if (option == JOptionPane.NO_OPTION)return;
+                if (reqlevel > highscore){
+                    JOptionPane.showMessageDialog(null,"Low high score");
+                }
                 if (cost>coinses){
                     JOptionPane.showMessageDialog(null,"Low funds");
                     return;
                 }
-                if (JOptionPane.showConfirmDialog(null,"Are you sure you want to buy the item for "+cost,"Q",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
-                    bmodel.addElement(stmodel.get(storelist.getSelectedIndex()));
-                    stmodel.remove(storelist.getSelectedIndex());
-                    storeunlocks.add(storeindex);
-                    coinses = coinses - cost;
-                    money.setText(coinses+"");
-                }
+                bmodel.addElement(stmodel.get(storelist.getSelectedIndex()));
+                stmodel.remove(storelist.getSelectedIndex());
+                storeunlocks.add(storeindex);
+                coinses = coinses - cost;
+                money.setText(coinses+"");
             }
         });
         lists.add(stlister);
@@ -160,53 +169,7 @@ public class gameWindow implements ActionListener{
             }
         };
         viewPort.setFocusable(true);
-        viewPort.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-                super.keyTyped(e);
-                if (e.getKeyChar() == 'i') {
-                    showinfo.doClick();
-                    return;
-                }
-                if (e.getKeyChar() == 'p') {
-                    play.doClick();
-                    return;
-                }
-                if (e.getKeyChar() == 'o') {
-                    options.doClick();
-                    return;
-                }
-                if (e.getKeyChar() == 's') {
-                    store.doClick();
-                    return;
-                }
-                if (e.getKeyChar() == ' ') {
-                    if (playing == false) {
-                        play.doClick();
-                        return;
-                    }
-                    rising = true;
-                    if (playing) {
-                        final int[] count = {0};
-                        final int[] countt = {9};
-                        new Timer(15, new ActionListener() {
-                            @Override
-                            public void actionPerformed(ActionEvent e) {
-                                if (count[0] == 6) {
-                                    Timer sourcetimer = (Timer) e.getSource();
-                                    sourcetimer.stop();
-                                }
-                                bird.setDegrees(315);
-                                bird.setLocation((int) bird.getLocation().getX(), (int) bird.getLocation().getY() - countt[0]);
-                                count[0]++;
-                            }
-                        }).start();
-                        while (count[0] == 8) ;
-                    }
-                    rising = false;
-                }
-            }
-        });
+        viewPort.addKeyListener(mainListener);
         bird = new Sprite(290/2,400/2,26,26,0,ImageIO.read(this.getClass().getResourceAsStream(birdpath)),"bird",true);
         frame.addWindowListener(new WindowAdapter() {
             @Override
@@ -218,12 +181,16 @@ public class gameWindow implements ActionListener{
         controls = new JPanel();
         play = new JButton("Play!");
         play.addActionListener(this);
+        play.addKeyListener(mainListener);
         showinfo = new JButton("Info");
         showinfo.addActionListener(this);
+        showinfo.addKeyListener(mainListener);
         store = new JButton("Store");
         store.addActionListener(this);
+        store.addKeyListener(mainListener);
         options = new JButton("Options");
         options.addActionListener(this);
+        options.addKeyListener(mainListener);
         controls.setLayout(new GridLayout(1, 5));
         controls.add(play);
         controls.add(store);
@@ -356,6 +323,53 @@ public class gameWindow implements ActionListener{
             }
         }).start();
     }
+    KeyAdapter mainListener = new KeyAdapter() {
+        @Override
+        public void keyTyped(KeyEvent e) {
+            super.keyTyped(e);
+            if (e.getKeyChar() == 'i') {
+                showinfo.doClick();
+                return;
+            }
+            if (e.getKeyChar() == 'p') {
+                play.doClick();
+                return;
+            }
+            if (e.getKeyChar() == 'o') {
+                options.doClick();
+                return;
+            }
+            if (e.getKeyChar() == 's') {
+                store.doClick();
+                return;
+            }
+            if (e.getKeyChar() == ' ') {
+                if (playing == false) {
+                    play.doClick();
+                    return;
+                }
+                rising = true;
+                if (playing) {
+                    final int[] count = {0};
+                    final int[] countt = {9};
+                    new Timer(15, new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            if (count[0] == 6) {
+                                Timer sourcetimer = (Timer) e.getSource();
+                                sourcetimer.stop();
+                            }
+                            bird.setDegrees(315);
+                            bird.setLocation((int) bird.getLocation().getX(), (int) bird.getLocation().getY() - countt[0]);
+                            count[0]++;
+                        }
+                    }).start();
+                    while (count[0] == 8) ;
+                }
+                rising = false;
+            }
+        }
+    };
     public gameWindow() throws Exception {
         init();
     }
@@ -482,18 +496,20 @@ public class gameWindow implements ActionListener{
             stmodel.clear();
             bmodel.clear();
             money.setText(String.valueOf(coinses)+" Coins");
-            int count = 0;
             for (String i : parser.getStoreitems()){
                 stmodel.addElement(i);
-                count++;
             }
             ArrayList<Integer> removes = new ArrayList<Integer>();
             for (int i : storeunlocks){
-                bmodel.addElement("Bought "+stmodel.get(i));
+                bmodel.addElement("Bought " + stmodel.get(i));
                 removes.add(i);
             }
             for (int i : removes){
                 if (stmodel.isEmpty()){
+                    break;
+                }
+                if (stmodel.size() == removes.size()){
+                    stmodel.clear();
                     break;
                 }
                 stmodel.remove(i);

@@ -14,8 +14,11 @@ public class gameDataParser {
     final String chosenbrdpth = "#BIRDPATH ";
     final String coinss = "#COINS ";
     final String allbirds = "#BIRD ";
-    String[] steitems = {"2 Coins per 1 Cost: 150","3 coins per 1 Cost: 250"};
+    String[] steitems = {"2 Coins per 1","3 coins per 1"};
     int[] steitemsval = {150,250};
+    String[] descitems = {"Double your coin value!\nRequirements:\nHighScore of at least 10,\n150 coins.",
+            "Triple your coin value!\nRequirements:\nHighScore of at least 20,\n250 coins."};
+    int[] levelreq = {10,20};
     //file vals
     int highScore = 0;
     int coins = 0;
@@ -110,5 +113,13 @@ public class gameDataParser {
 
     public int[] getStoreCosts() {
         return steitemsval;
+    }
+
+    public int[] getLevelRequrements() {
+        return levelreq;
+    }
+
+    public String[] getDescriptions() {
+        return descitems;
     }
 }
