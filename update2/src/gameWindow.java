@@ -62,6 +62,7 @@ public class gameWindow implements ActionListener{
     int actgm = 0;
     ArrayList<Integer> storeunlocks;
     ArrayList<Integer> activebuys;
+    ArrayList<String> birdpaths;
     String birdpath;
     void init() throws IOException{
         parser.getFile();
@@ -71,6 +72,7 @@ public class gameWindow implements ActionListener{
         storeunlocks = parser.getUnlocked();
         birdpath = parser.getBirdpath();
         activebuys = parser.getSelectedbuy();
+        birdpaths = parser.getBirds();
         coinmage = ImageIO.read(this.getClass().getResourceAsStream("world/coin.gif"));
         coin = new Sprite(PipeX,320,25,35,0,coinmage,"Coin",true);
         pipeup = ImageIO.read(this.getClass().getResourceAsStream("world/pipeup.gif"));
@@ -150,7 +152,7 @@ public class gameWindow implements ActionListener{
             @Override
             public void windowClosing(WindowEvent e) {
                 super.windowClosing(e);
-                exporter.composeExport(highscore,storeunlocks,activebuys,actgm,birdpath,coinses);
+                exporter.composeExport(highscore,storeunlocks,activebuys,actgm,birdpath,coinses,birdpaths);
             }
         });
         controls = new JPanel();
@@ -402,7 +404,7 @@ public class gameWindow implements ActionListener{
         }
 
         else if (e.getSource() == showinfo){
-            JOptionPane.showMessageDialog(null,"Score: "+scorenum+"\nHighscore: "+highscore+"\nCoins: "+coinnum+"\nSession coins: "+coinses);
+            JOptionPane.showMessageDialog(null,"Score: "+scorenum+"\nHighscore: "+highscore+"\nCoins: "+coinnum+"\nAll coins: "+coinses);
         }
     }
 }

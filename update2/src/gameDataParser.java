@@ -14,6 +14,7 @@ public class gameDataParser {
     final String activegm = "#ACTIVEGMDE ";
     final String chosenbrdpth = "#BIRDPATH ";
     final String coinss = "#COINS ";
+    final String allbirds = "#BIRD ";
     String[] steitems = {"2 Coins per 1","3 coins per 1"};
     int[] steitemsval = {50,100};
     //file vals
@@ -23,20 +24,23 @@ public class gameDataParser {
     int gamemode = 0;
     ArrayList<Integer> unlocked = new ArrayList<Integer>();
     ArrayList<Integer> selectedbuy = new ArrayList<Integer>();
-    public void getFile(){
-        Scanner getter = null;
-        try {
-            String dataFolder = System.getenv("APPDATA");
-            getter = new Scanner(new FileReader(dataFolder+"\\flappybird\\gamefo.txt"));
-        }catch (FileNotFoundException e){
-            String dataFolder = System.getenv("APPDATA");
-            File g = new File(dataFolder+"\\flappybird\\gamefo.txt");
-            try {
-                g.createNewFile();
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
+    ArrayList<String> birds = new ArrayList<String>();
+    public void getFile() throws IOException {
+        String dataFolder = System.getenv("APPDATA");
+        File g1 = new File(dataFolder+"\\flappybird");
+        File g = new File(dataFolder+"\\flappybird\\gamefo.txt");
+        File g2 = new File(dataFolder+"\\flappybird\\birds");
+        if (g2.exists() == false){
+            g2.mkdir();
         }
+        if (g1.exists() == false){
+            g1.mkdir();
+            g.createNewFile();
+        }
+        if (g.exists() == false){
+            g.createNewFile();
+        }
+        Scanner getter = new Scanner(new FileReader(dataFolder+"\\flappybird\\gamefo.txt"));
         ArrayList<String> file = new ArrayList<String>();
         while (getter.hasNextLine()){
             file.add(getter.nextLine());
@@ -70,6 +74,10 @@ public class gameDataParser {
                 String ctable = i.replace(coinss,"");
                 coins = Integer.decode(ctable);
             }
+            else if (i.startsWith(allbirds)){
+                String ctable = i.replace(allbirds,"");
+                birds.add(ctable);
+            }
         }
     }
 
@@ -95,6 +103,10 @@ public class gameDataParser {
 
     public int getCoins() {
         return coins;
+    }
+
+    public ArrayList<String> getBirds() {
+        return birds;
     }
 
     public String[] getStoreitems() {

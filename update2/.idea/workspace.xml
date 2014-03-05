@@ -69,10 +69,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="gameWindow.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="gameWindow.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/gameWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="147" column="43" selection-start="6034" selection-end="6034" vertical-scroll-proportion="0.0" vertical-offset="58" max-vertical-offset="6494">
+            <state line="56" column="26" selection-start="1342" selection-end="1342" vertical-scroll-proportion="0.37412587" vertical-offset="551" max-vertical-offset="6528">
               <folding />
             </state>
           </provider>
@@ -81,16 +81,23 @@
       <file leaf-file-name="gameDataParser.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gameDataParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="28" selection-start="650" selection-end="650" vertical-scroll-proportion="0.0" vertical-offset="191" max-vertical-offset="1581">
-              <folding />
+            <state line="12" column="43" selection-start="343" selection-end="343" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1819">
+              <folding>
+                <element signature="e#887#895#0" expanded="true" />
+                <element signature="e#1566#1574#0" expanded="true" />
+                <element signature="e#3000#3001#0" expanded="true" />
+                <element signature="e#3031#3032#0" expanded="true" />
+                <element signature="e#3081#3082#0" expanded="true" />
+                <element signature="e#3115#3116#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gameDataExporter.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="gameDataExporter.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gameDataExporter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="29" selection-start="1087" selection-end="1087" vertical-scroll-proportion="1.0426667" vertical-offset="0" max-vertical-offset="799">
+            <state line="30" column="31" selection-start="1249" selection-end="1249" vertical-scroll-proportion="0.0" vertical-offset="203" max-vertical-offset="867">
               <folding />
             </state>
           </provider>
@@ -99,27 +106,9 @@
       <file leaf-file-name="Program.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Program.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="31" selection-start="190" selection-end="190" vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="459">
+            <state line="8" column="31" selection-start="190" selection-end="190" vertical-scroll-proportion="0.0" vertical-offset="3" max-vertical-offset="391">
               <folding />
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="birdMaker.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/birdMaker.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="29" selection-start="732" selection-end="732" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bird.png" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/bird/bird.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
           </provider>
         </entry>
       </file>
@@ -145,10 +134,10 @@
         <option value="$PROJECT_DIR$/src/games/components/WorldPanel.java" />
         <option value="$PROJECT_DIR$/src/Program.java" />
         <option value="$PROJECT_DIR$/src/gamefo.txt" />
-        <option value="$PROJECT_DIR$/src/gameWindow.java" />
         <option value="$PROJECT_DIR$/src/birdMaker.java" />
         <option value="$PROJECT_DIR$/src/gameDataParser.java" />
         <option value="$PROJECT_DIR$/src/gameDataExporter.java" />
+        <option value="$PROJECT_DIR$/src/gameWindow.java" />
       </list>
     </option>
   </component>
@@ -231,7 +220,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="bird" />
+              <option name="myItemId" value="games" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -252,7 +241,7 @@
     <property name="FullScreen" value="false" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../update3" />
     <property name="SearchEverywhereHistory" value="write" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -441,7 +430,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -461,7 +450,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32242227" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32242227" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289689" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -491,11 +480,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/games/utils/GameLogic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="36" selection-start="242" selection-end="242" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="918" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gameWindow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="64" column="26" selection-start="2050" selection-end="2050" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1462">
@@ -661,7 +645,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/games/utils/ImageUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="18" selection-start="2520" selection-end="2520" vertical-scroll-proportion="0.24739583" vertical-offset="1010" max-vertical-offset="1394" />
+        <state line="68" column="18" selection-start="2520" selection-end="2520" vertical-scroll-proportion="0.24739583" vertical-offset="1010" max-vertical-offset="1394">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Temp/Temp2_src.zip/javax/imageio/ImageIO.java">
@@ -748,17 +734,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Program.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="31" selection-start="190" selection-end="190" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/src.zip!/java/lang/String.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="107" column="19" selection-start="3619" selection-end="3645" vertical-scroll-proportion="0.33333334" vertical-offset="1133" max-vertical-offset="52292">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/src.zip!/java/io/File.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1005" column="0" selection-start="41592" selection-end="41592" vertical-scroll-proportion="0.0" vertical-offset="16331" max-vertical-offset="36754">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/birdMaker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="29" selection-start="732" selection-end="732" vertical-scroll-proportion="0.8453608" vertical-offset="63" max-vertical-offset="544">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -767,32 +762,37 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/birdMaker.java">
+    <entry file="file://$PROJECT_DIR$/src/Program.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="29" selection-start="732" selection-end="732" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gameWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="147" column="43" selection-start="6034" selection-end="6034" vertical-scroll-proportion="0.0" vertical-offset="58" max-vertical-offset="6494">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gameDataParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="28" selection-start="650" selection-end="650" vertical-scroll-proportion="0.0" vertical-offset="191" max-vertical-offset="1581">
+        <state line="8" column="31" selection-start="190" selection-end="190" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gameDataExporter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="29" selection-start="1087" selection-end="1087" vertical-scroll-proportion="1.0426667" vertical-offset="0" max-vertical-offset="799">
+        <state line="30" column="31" selection-start="1249" selection-end="1249" vertical-scroll-proportion="0.0" vertical-offset="203" max-vertical-offset="867">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gameDataParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="43" selection-start="343" selection-end="343" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1819">
+          <folding>
+            <element signature="e#887#895#0" expanded="true" />
+            <element signature="e#1566#1574#0" expanded="true" />
+            <element signature="e#3000#3001#0" expanded="true" />
+            <element signature="e#3031#3032#0" expanded="true" />
+            <element signature="e#3081#3082#0" expanded="true" />
+            <element signature="e#3115#3116#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gameWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="26" selection-start="1342" selection-end="1342" vertical-scroll-proportion="0.37412587" vertical-offset="551" max-vertical-offset="6528">
           <folding />
         </state>
       </provider>
