@@ -96,7 +96,7 @@
       <file leaf-file-name="gameDataParser.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/gameDataParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="31" selection-start="574" selection-end="574" vertical-scroll-proportion="0.20876288" vertical-offset="140" max-vertical-offset="1666">
+            <state line="16" column="74" selection-start="539" selection-end="539" vertical-scroll-proportion="0.16494845" vertical-offset="140" max-vertical-offset="1666">
               <folding />
             </state>
           </provider>
@@ -425,7 +425,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="1" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -871,6 +871,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/gameDataExporter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="45" selection-start="291" selection-end="291" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="799">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/gameWindow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="501" column="36" selection-start="21185" selection-end="21185" vertical-scroll-proportion="0.0" vertical-offset="7967" max-vertical-offset="8636">
@@ -893,16 +900,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gameDataExporter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="45" selection-start="291" selection-end="291" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="799">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gameDataParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="31" selection-start="574" selection-end="574" vertical-scroll-proportion="0.20876288" vertical-offset="140" max-vertical-offset="1666">
+        <state line="16" column="74" selection-start="539" selection-end="539" vertical-scroll-proportion="0.16494845" vertical-offset="140" max-vertical-offset="1666">
           <folding />
         </state>
       </provider>

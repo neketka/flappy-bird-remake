@@ -14,7 +14,7 @@ public class gameDataParser {
     final String chosenbrdpth = "#BIRDPATH ";
     final String coinss = "#COINS ";
     final String allbirds = "#BIRD ";
-    String[] steitems = {"2 Coins per 1 Cost: 50","3 coins per 1 Cost: 100"};
+    String[] steitems = {"2 Coins per 1 Cost: 150","3 coins per 1 Cost: 250"};
     int[] steitemsval = {150,250};
     //file vals
     int highScore = 0;
