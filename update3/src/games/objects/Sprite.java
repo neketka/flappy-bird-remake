@@ -189,6 +189,8 @@ public class Sprite {
         for(Image i : costumes){
             this.costumes.add(i);
         }
+        this.image = this.costumes.get(costumeindex).getScaledInstance((int)r.getWidth(), (int)r.getHeight(), Image.SCALE_SMOOTH);
+        setDegrees(degrees);
     }
     public void removeCostume(int index){
         if (costumes.size() == 1){
@@ -200,6 +202,8 @@ public class Sprite {
                 costumeindex = 0;
             }
         }
+        this.image = costumes.get(costumeindex).getScaledInstance((int)r.getWidth(), (int)r.getHeight(), Image.SCALE_SMOOTH);
+        setDegrees(degrees);
     }
     public ArrayList<Image> getCostumes() {
         return costumes;
@@ -209,7 +213,7 @@ public class Sprite {
     }
     private ArrayList<Image> costumes = new ArrayList<Image>();
     private int costumeindex = 0;
-    public void checkCollide(){
+    private void checkCollide(){
         ArrayList<Sprite> collider = new ArrayList<Sprite>();
         for(Sprite i : colliders){
             if (Sprite.isCollided(i,this)){

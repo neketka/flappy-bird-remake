@@ -6,14 +6,14 @@ package games.objects;
 public class SpriteEvent {
     private Sprite[] collider;
     private Sprite source;
-    public SpriteEvent(Sprite[] collider,Sprite sou){
-        this.collider = collider;
+    public SpriteEvent(Sprite[] colliders,Sprite sou){
+        this.collider = colliders;
         source = sou;
     }
     public Sprite getSource() {
         return source;
     }
-    public Sprite[] getCollider() {
+    public Sprite[] getColliders() {
         return collider;
     }
 }

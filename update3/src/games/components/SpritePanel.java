@@ -14,31 +14,27 @@ public abstract class SpritePanel extends JPanel {
     private boolean isBgColor = false;
     private Color bgcolor = Color.white;
     private ArrayList<Sprite> sprites = new ArrayList<Sprite>();
-    public SpritePanel(Image background, boolean withPaint){
+    public SpritePanel(Image background){
         isBgColor = false;
         costumes.add(background);
-        if (withPaint){
-            this.update();
-        }
     }
-    public SpritePanel(Color bgcolor, boolean withPaint){
+    public SpritePanel(Color bgcolor){
         isBgColor = true;
         this.bgcolor = bgcolor;
-        if (withPaint){
-            this.repaint();
-        }
     }
-    protected abstract void onUpdate();
+    protected abstract void beforeUpdate();
+    protected abstract void onUpdate(Graphics2D g);
     protected abstract void afterUpdate();
     public void update(){
-        onUpdate();
+        beforeUpdate();
         paint(getGraphics());
         afterUpdate();
     }
+
     @Override
     public void paint(Graphics g) {
         BufferedImage image = new BufferedImage(getWidth(),getHeight(),BufferedImage.TYPE_INT_RGB);
-        Graphics graphics = image.getGraphics();
+        Graphics2D graphics = image.createGraphics();
         if (isBgColor){
             graphics.setColor(bgcolor);
             graphics.fillRect(0,0,this.getWidth(),this.getHeight());
@@ -51,6 +47,7 @@ public abstract class SpritePanel extends JPanel {
                 graphics.drawImage(s1.getImage(),(int)s1.getLocation().getX(),(int)s1.getLocation().getY(),(int)s1.getSize().getWidth(),(int)s1.getSize().getHeight(),null);
             }
         }
+        onUpdate(graphics);
         g.drawImage(image,0,0,null);
     }
     public void addSprites(Sprite[] sprites){

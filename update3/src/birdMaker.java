@@ -1,11 +1,15 @@
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Created by Nikita on 3/1/14.
  */
 public class birdMaker {
-    public static Image getNewBird(Color color){
+    public static String getNewBird(Color color,String colorname) throws IOException {
+        String dataFolder = System.getenv("APPDATA");
         BufferedImage image = new BufferedImage(26,26,BufferedImage.TYPE_INT_RGB);
         Graphics g = image.getGraphics();
         g.setColor(Color.black);
@@ -21,6 +25,7 @@ public class birdMaker {
         g.fillOval(19,12,6,4);
         g.setColor(Color.PINK);
         g.fillOval(-4,9,12,7);
-        return (Image) image;
+        ImageIO.write(image,"png",new File(dataFolder+"\\flappybird\\birds\\"+colorname+"bird.png"));
+        return dataFolder+"\\flappybird\\birds\\"+colorname+"bird.png"              ;
     }
 }

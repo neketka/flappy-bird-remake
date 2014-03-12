@@ -12,25 +12,23 @@ import java.util.ArrayList;
  * Created by Nikita on 2/15/14.
  */
 public abstract class WorldPanel extends JPanel {
-    public WorldPanel(World world, boolean withPaint){
+    public WorldPanel(World world){
         this.world = world;
-        if (withPaint){
-            this.update();
-        }
     }
     public WorldPanel(){
     }
-    protected abstract void onUpdate();
+    protected abstract void beforeUpdate();
+    protected abstract void onUpdate(Graphics2D g);
     protected abstract void afterUpdate();
     public void update(){
-        onUpdate();
+        beforeUpdate();
         paint(getGraphics());
         afterUpdate();
     }
     @Override
     public void paint(Graphics g) {
         BufferedImage image = new BufferedImage(getWidth(),getHeight(),BufferedImage.TYPE_INT_RGB);
-        Graphics graphics = image.getGraphics();
+        Graphics2D graphics = image.createGraphics();
         if (world.isBgColor()){
             graphics.setColor(world.getBgcolor());
             graphics.fillRect(0,0,this.getWidth(),this.getHeight());
@@ -43,6 +41,7 @@ public abstract class WorldPanel extends JPanel {
                 graphics.drawImage(s1.getImage(),(int)s1.getLocation().getX(),(int)s1.getLocation().getY(),(int)s1.getSize().getWidth(),(int)s1.getSize().getHeight(),null);
             }
         }
+        onUpdate(graphics);
         g.drawImage(image,0,0,null);
     }
     private World world = null;

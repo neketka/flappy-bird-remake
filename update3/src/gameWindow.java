@@ -3,14 +3,19 @@ import games.objects.Sprite;
 import games.objects.SpriteEvent;
 import games.objects.World;
 import games.utils.RandomNumber;
+import games.utils.Sound;
 import games.utils.SpriteListener;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.text.Style;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -22,6 +27,7 @@ import java.util.Collections;
 public class gameWindow implements ActionListener{
     gameDataParser parser = new gameDataParser();
     gameDataExporter exporter = new gameDataExporter();
+    Sound sound = new Sound(this.getClass().getResource("sounds/calm4.wav"));
     WorldPanel viewPort;
     World startworld;
     World world;
@@ -76,6 +82,7 @@ public class gameWindow implements ActionListener{
     //Store end
     int scorenum = 0;
     int coinnum = 0;
+    int coinspread = 30;
     final int PipeX = 350;
     final int downPipeY = 345;
     int actgm = 0;
@@ -84,10 +91,10 @@ public class gameWindow implements ActionListener{
     String birdpath;
     void init() throws IOException{
         lists = new JPanel(new GridLayout(1,2));
-        lists.setSize(390,240);
+        lists.setSize(390, 240);
         lists.setPreferredSize(new Dimension(390, 240));
         buttons = new JPanel(new GridLayout(1,3));
-        buttons.setSize(390,30);
+        buttons.setSize(390, 30);
         buttons.setPreferredSize(new Dimension(390, 30));
         storeMenu = new JDialog(frame,"Store",true);
         storeMenu.setResizable(false);
@@ -106,27 +113,32 @@ public class gameWindow implements ActionListener{
             public void actionPerformed(ActionEvent e) {
                 ArrayList<String> stitems = new ArrayList<String>(Arrays.asList(parser.getStoreitems()));
                 int storeindex = stitems.indexOf(storelist.getSelectedValue());
-                if (storeindex == -1){
-                    JOptionPane.showMessageDialog(null,"Choose something!");
+                if (storeindex == -1) {
+                    JOptionPane.showMessageDialog(null, "Choose something!");
                     return;
                 }
                 int cost = parser.getStoreCosts()[storeindex];
                 int reqlevel = parser.getLevelRequrements()[storeindex];
                 String description = parser.getDescriptions()[storeindex];
-                int option = JOptionPane.showConfirmDialog(null,description+"\n-----------------------------\n                 Buy?","Description",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-                if (option == JOptionPane.NO_OPTION)return;
-                if (reqlevel > highscore){
-                    JOptionPane.showMessageDialog(null,"Low high score");
+                int option = JOptionPane.showConfirmDialog(null, description + "\n-----------------------------\n                 Buy?", "Description", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                if (option == JOptionPane.NO_OPTION) return;
+                if (reqlevel > highscore && cost > coinses){
+                    JOptionPane.showMessageDialog(null,"Low funds and high score");
+                    return;
                 }
-                if (cost>coinses){
-                    JOptionPane.showMessageDialog(null,"Low funds");
+                if (reqlevel > highscore) {
+                    JOptionPane.showMessageDialog(null, "Low high score");
+                    return;
+                }
+                if (cost > coinses) {
+                    JOptionPane.showMessageDialog(null, "Low funds");
                     return;
                 }
                 bmodel.addElement(stmodel.get(storelist.getSelectedIndex()));
                 stmodel.remove(storelist.getSelectedIndex());
                 storeunlocks.add(storeindex);
                 coinses = coinses - cost;
-                money.setText(coinses+"");
+                money.setText(coinses + "");
             }
         });
         lists.add(stlister);
@@ -144,11 +156,11 @@ public class gameWindow implements ActionListener{
         birdpaths = parser.getBirds();
         coinmage = ImageIO.read(this.getClass().getResourceAsStream("world/coin.gif"));
         coin = new Sprite(PipeX,320,25,35,0,coinmage,"Coin",true);
-        pipeup = ImageIO.read(this.getClass().getResourceAsStream("world/pipeup.gif"));
-        pipedown = ImageIO.read(this.getClass().getResourceAsStream("world/pipedown.gif"));
-        mainworld = ImageIO.read(this.getClass().getResourceAsStream("world/birdplay.gif"));
-        startt = ImageIO.read(this.getClass().getResourceAsStream("world/flappybirdstart.gif"));
-        deathh = ImageIO.read(this.getClass().getResourceAsStream("world/death.gif"));
+        pipeup = ImageIO.read(this.getClass().getResourceAsStream("world/pipeup.png"));
+        pipedown = ImageIO.read(this.getClass().getResourceAsStream("world/pipedown.png"));
+        mainworld = ImageIO.read(this.getClass().getResourceAsStream("world/birdplay.png"));
+        startt = ImageIO.read(this.getClass().getResourceAsStream("world/flappybirdstart.png"));
+        deathh = ImageIO.read(this.getClass().getResourceAsStream("world/death.png"));
         pd1 = new Sprite(PipeX,downPipeY,pipedown.getWidth(null),pipedown.getHeight(null),0,pipedown,"Down Pipe",true);
         pd2 = new Sprite((int)pd1.getLocation().getX()+pipeDistance,(int)pd1.getLocation().getY(),(int)pd1.getSize().getWidth(),(int)pd1.getSize().getHeight(),pd1.getDegrees(),pd1.getCostumes().get(pd1.getCostumeindex()),pd1.getName(),true);
         pd3 = new Sprite((int)pd1.getLocation().getX()+pipeDistance*2,(int)pd1.getLocation().getY(),(int)pd1.getSize().getWidth(),(int)pd1.getSize().getHeight(),pd1.getDegrees(),pd1.getCostumes().get(pd1.getCostumeindex()),pd1.getName(),true);
@@ -159,9 +171,26 @@ public class gameWindow implements ActionListener{
         world = new World(mainworld,"Main world");
         startworld = new World(startt,"Start world");
         death = new World(deathh,"Death world");
-        viewPort = new WorldPanel(startworld, false) {
+        viewPort = new WorldPanel(startworld) {
             @Override
-            protected void onUpdate() {
+            protected void beforeUpdate() {
+            }
+
+            @Override
+            protected void onUpdate(Graphics2D g) {
+                if (playing){
+                    g.setFont(new Font("Times New Roman", Font.ITALIC,36));
+                    g.setColor(Color.BLUE);
+                    g.drawString("Score: "+scorenum,20,120);
+                    g.drawString("Coins: "+coinnum,20,150);
+                }
+                else {
+                    g.setColor(Color.BLACK);
+                    g.setFont(new Font("Times New Roman", Font.PLAIN,18));
+                    g.drawString("High Score: "+highscore,this.getWidth()/2-50,this.getHeight()/2+80);
+                    g.drawString("Coins: "+coinnum,this.getWidth()/2-50,this.getHeight()/2+95);
+                    g.drawString("Score: "+scorenum,this.getWidth()/2-50,this.getHeight()/2+110);
+                }
             }
 
             @Override
@@ -175,7 +204,11 @@ public class gameWindow implements ActionListener{
             @Override
             public void windowClosing(WindowEvent e) {
                 super.windowClosing(e);
-                exporter.composeExport(highscore,storeunlocks,actgm,birdpath,coinses,birdpaths);
+                try {
+                    exporter.composeExport(highscore,storeunlocks,actgm,birdpath,coinses,birdpaths);
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
             }
         });
         controls = new JPanel();
@@ -195,7 +228,6 @@ public class gameWindow implements ActionListener{
         controls.add(play);
         controls.add(store);
         controls.add(options);
-        controls.add(showinfo);
         world.addSprite(bird);
         world.addSprite(pd1);
         world.addSprite(pd2);
@@ -322,30 +354,30 @@ public class gameWindow implements ActionListener{
                 }
             }
         }).start();
+        //sound.playSound();
     }
     KeyAdapter mainListener = new KeyAdapter() {
         @Override
         public void keyTyped(KeyEvent e) {
             super.keyTyped(e);
-            if (e.getKeyChar() == 'i') {
+            if (e.getKeyChar() == 'i'&&playing == false) {
                 showinfo.doClick();
                 return;
             }
-            if (e.getKeyChar() == 'p') {
+            if (e.getKeyChar() == 'p'&&playing == false) {
                 play.doClick();
                 return;
             }
-            if (e.getKeyChar() == 'o') {
+            if (e.getKeyChar() == 'o'&&playing == false) {
                 options.doClick();
                 return;
             }
-            if (e.getKeyChar() == 's') {
+            if (e.getKeyChar() == 's'&&playing == false) {
                 store.doClick();
                 return;
             }
             if (e.getKeyChar() == ' ') {
                 if (playing == false) {
-                    play.doClick();
                     return;
                 }
                 rising = true;
@@ -381,6 +413,9 @@ public class gameWindow implements ActionListener{
                     break;
                 case 1:
                     coinink = 3;
+                    break;
+                case 2:
+                    coinspread = 10;
                     break;
             }
         }
@@ -457,7 +492,7 @@ public class gameWindow implements ActionListener{
             pd3.setLocation(PipeX+pipeDistance,pdh);
         }
         if (coin.getLocation().getX() <=0){
-            coin.setLocation(PipeX+pipeDistance+50,(int)RandomNumber.randomInt((long)bird.getLocation().getY()-30,(long)bird.getLocation().getY()+30));
+            coin.setLocation(PipeX+pipeDistance+50,(int)RandomNumber.randomInt((long)bird.getLocation().getY()-coinspread,(long)bird.getLocation().getY()+coinspread));
         }
     }
     public void pipeMove(){
@@ -521,7 +556,11 @@ public class gameWindow implements ActionListener{
         }
 
         else if (e.getSource() == options){
-            JOptionPane.showMessageDialog(null,"No options available yet!");
+            try {
+                showOptions();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
         }
 
         else if (e.getSource() == showinfo){
@@ -536,5 +575,34 @@ public class gameWindow implements ActionListener{
         public void setSelectionInterval(int index0, int index1) {
             super.setSelectionInterval(-1, -1);
         }
+    }
+    public void showOptions() throws IOException {
+        JComboBox<String> gmde = new JComboBox<String>();
+        gmde.addItem("Default");
+        ArrayList<File> ff = new ArrayList<File>();
+        ff.add(new File(this.getClass().getResource(birdpath).getFile()));
+        for (String i : birdpaths){
+            ff.add(new File(i));
+        }
+        String[] f = new String[ff.size()];
+        for (int i = 0;i<ff.size();i++){
+            f[i] = ff.get(i).getName();
+        }
+        JComboBox<String> birdslocs = new JComboBox<String>(f);
+        JDialog optionsWindow = new JDialog(frame,"Options",true);
+        optionsWindow.setResizable(false);
+        optionsWindow.setSize(200, 100);
+        optionsWindow.setLayout(new GridLayout(2, 2));
+        optionsWindow.add(new JLabel("Gamemode: "));
+        optionsWindow.add(gmde);
+        optionsWindow.add(new JLabel("Birds: "));
+        optionsWindow.add(birdslocs);
+        optionsWindow.setVisible(true);
+        JOptionPane.showMessageDialog(null,ff.get(birdslocs.getSelectedIndex()).getAbsolutePath());
+        Image image = ImageIO.read(new File(ff.get(birdslocs.getSelectedIndex()).getAbsolutePath()));
+        birdpath = ff.get(birdslocs.getSelectedIndex()).getAbsolutePath();
+        bird.addCostume(image);
+        bird.removeCostume(0);
+        bird.setCostume(0);
     }
 }
