@@ -72,7 +72,7 @@
       <file leaf-file-name="gameWindow.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/gameWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="56" column="26" selection-start="1342" selection-end="1342" vertical-scroll-proportion="0.37412587" vertical-offset="551" max-vertical-offset="6528">
+            <state line="57" column="21" selection-start="1364" selection-end="1364" vertical-scroll-proportion="0.123861566" vertical-offset="714" max-vertical-offset="6528">
               <folding />
             </state>
           </provider>
@@ -81,15 +81,8 @@
       <file leaf-file-name="gameDataParser.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gameDataParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="43" selection-start="343" selection-end="343" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1819">
-              <folding>
-                <element signature="e#887#895#0" expanded="true" />
-                <element signature="e#1566#1574#0" expanded="true" />
-                <element signature="e#3000#3001#0" expanded="true" />
-                <element signature="e#3031#3032#0" expanded="true" />
-                <element signature="e#3081#3082#0" expanded="true" />
-                <element signature="e#3115#3116#0" expanded="true" />
-              </folding>
+            <state line="12" column="43" selection-start="343" selection-end="343" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="2125">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -97,7 +90,7 @@
       <file leaf-file-name="gameDataExporter.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gameDataExporter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="31" selection-start="1249" selection-end="1249" vertical-scroll-proportion="0.0" vertical-offset="203" max-vertical-offset="867">
+            <state line="30" column="31" selection-start="1249" selection-end="1249" vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="935">
               <folding />
             </state>
           </provider>
@@ -106,7 +99,7 @@
       <file leaf-file-name="Program.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Program.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="31" selection-start="190" selection-end="190" vertical-scroll-proportion="0.0" vertical-offset="3" max-vertical-offset="391">
+            <state line="8" column="31" selection-start="190" selection-end="190" vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="459">
               <folding />
             </state>
           </provider>
@@ -173,7 +166,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -226,6 +218,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -241,9 +234,9 @@
     <property name="FullScreen" value="false" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../update3" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../update1" />
     <property name="SearchEverywhereHistory" value="write" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
@@ -309,19 +302,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -347,6 +327,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -449,7 +442,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24924472" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32242227" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -645,9 +638,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/games/utils/ImageUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="18" selection-start="2520" selection-end="2520" vertical-scroll-proportion="0.24739583" vertical-offset="1010" max-vertical-offset="1394">
-          <folding />
-        </state>
+        <state line="68" column="18" selection-start="2520" selection-end="2520" vertical-scroll-proportion="0.24739583" vertical-offset="1010" max-vertical-offset="1394" />
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Temp/Temp2_src.zip/javax/imageio/ImageIO.java">
@@ -779,20 +770,13 @@
     <entry file="file://$PROJECT_DIR$/src/gameDataParser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="43" selection-start="343" selection-end="343" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1819">
-          <folding>
-            <element signature="e#887#895#0" expanded="true" />
-            <element signature="e#1566#1574#0" expanded="true" />
-            <element signature="e#3000#3001#0" expanded="true" />
-            <element signature="e#3031#3032#0" expanded="true" />
-            <element signature="e#3081#3082#0" expanded="true" />
-            <element signature="e#3115#3116#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gameWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="26" selection-start="1342" selection-end="1342" vertical-scroll-proportion="0.37412587" vertical-offset="551" max-vertical-offset="6528">
+        <state line="57" column="21" selection-start="1364" selection-end="1364" vertical-scroll-proportion="0.123861566" vertical-offset="714" max-vertical-offset="6528">
           <folding />
         </state>
       </provider>
@@ -828,6 +812,7 @@
       </state>
       <state key="GlobalLibrariesConfigurable.UI">
         <settings>
+          <last-edited>2dGamesLib</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -856,7 +841,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

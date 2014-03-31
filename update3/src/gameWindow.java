@@ -27,7 +27,6 @@ import java.util.Collections;
 public class gameWindow implements ActionListener{
     gameDataParser parser = new gameDataParser();
     gameDataExporter exporter = new gameDataExporter();
-    Sound sound = new Sound(this.getClass().getResource("sounds/calm4.wav"));
     WorldPanel viewPort;
     World startworld;
     World world;

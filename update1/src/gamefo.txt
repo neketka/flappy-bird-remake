@@ -1,4 +1,4 @@
 #HIGHSCORE 0x5F
-#BIRDPATH bird\bird.gif
+#BIRDPATH bird\bird.png
 #COINS 0x1A
 #ACTIVEGMDE 0x0
