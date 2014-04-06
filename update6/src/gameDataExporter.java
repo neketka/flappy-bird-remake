@@ -21,7 +21,7 @@ public class gameDataExporter{
     final String allbirds = "#BIRD ";
     final String usr = "#USER ";
     public void composeExport(int highscore,ArrayList<Integer> storeunlocks,int activegamemode,String birdpath,int coins,ArrayList<String> birdpaths) throws IOException {
-        ArrayList<String> file = new ArrayList<String>();
+        ArrayList<String> file = new ArrayList<>();
         file.add(hscore+"0x"+Integer.toHexString(highscore));
         for (int i : storeunlocks){
             file.add(ulktstore+"0x"+Integer.toHexString(i));
@@ -54,7 +54,6 @@ public class gameDataExporter{
         Cipher c = Cipher.getInstance("AES");
         c.init(Cipher.ENCRYPT_MODE, key);
         byte[] encVal = c.doFinal(Data.getBytes());
-        String encryptedValue = new BASE64Encoder().encode(encVal);
-        return encryptedValue;
+        return new BASE64Encoder().encode(encVal);
     }
 }

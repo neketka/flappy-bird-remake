@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 
 /**
  * Created by Nikita on 2/18/14.
@@ -31,6 +32,7 @@ public class gameWindow implements ActionListener{
     Image pipeup;
     Image pipedown;
     Image coinmage;
+    Image extreme;
     Sprite bird;
     Sprite pd1;
     Sprite pd2;
@@ -127,7 +129,6 @@ public class gameWindow implements ActionListener{
                         case 5:
                             try {
                                 birdpaths.add(birdMaker.getNewBird(Color.green, "green"));
-                                birdpath = birdpaths.get(birdpaths.size() -1);
                             } catch (IOException e1) {
                                 ExceptionHandler.UseException(e1);
                             }
@@ -135,10 +136,15 @@ public class gameWindow implements ActionListener{
                         case 6:
                             try {
                                 birdpaths.add(birdMaker.getNewBird(Color.blue,"blue"));
-                                birdpath = birdpaths.get(birdpaths.size() -1);
                             }  catch (IOException e1) {
                                 ExceptionHandler.UseException(e1);
                             }
+                    }
+                    birdpath = birdpaths.get(birdpaths.size() -1);
+                    try {
+                        bird.replaceCostume(0,ImageIO.read(new File(birdpath)));
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
                     }
                 }
                 bmodel.addElement(stmodel.get(storelist.getSelectedIndex()));
@@ -168,6 +174,7 @@ public class gameWindow implements ActionListener{
         mainworld = ImageIO.read(this.getClass().getResourceAsStream("world/birdplay.png"));
         startt = ImageIO.read(this.getClass().getResourceAsStream("world/flappybirdstart.png"));
         deathh = ImageIO.read(this.getClass().getResourceAsStream("world/death.png"));
+        extreme = ImageIO.read(this.getClass().getResourceAsStream("world/extreme.png"));
         pd1 = new Sprite(PipeX,downPipeY,pipedown.getWidth(null),pipedown.getHeight(null),0,pipedown,"Down Pipe",true);
         pd2 = new Sprite((int)pd1.getLocation().getX()+gameVars.pipeDistance,(int)pd1.getLocation().getY(),(int)pd1.getSize().getWidth(),(int)pd1.getSize().getHeight(),pd1.getDegrees(),pd1.getCostumes().get(pd1.getCostumeindex()),pd1.getName(),true);
         pd3 = new Sprite((int)pd1.getLocation().getX()+gameVars.pipeDistance*2,(int)pd1.getLocation().getY(),(int)pd1.getSize().getWidth(),(int)pd1.getSize().getHeight(),pd1.getDegrees(),pd1.getCostumes().get(pd1.getCostumeindex()),pd1.getName(),true);
@@ -258,6 +265,7 @@ public class gameWindow implements ActionListener{
         frame.add(controls);
         frame.setVisible(true);
         updateStore();
+        updateGameMode();
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -386,6 +394,34 @@ public class gameWindow implements ActionListener{
             }
         }
     }
+    public void updateGameMode(){
+        switch (gameVars.actgm){
+            case 0:
+                gameVars.pipeSpeed = 5;
+                gameVars.defcc = 3;
+                gameVars.jumpstart = 7.3;
+                gameVars.jumptarget = 12;
+                try {
+                    world.addCostume(ImageIO.read(this.getClass().getClassLoader().getResourceAsStream("world/birdplay.png")));
+                    world.removeCostume(0);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case 1:
+                gameVars.pipeSpeed = 7;
+                gameVars.defcc = 10;
+                gameVars.jumpstart = 7.2;
+                gameVars.jumptarget = 20;
+                try {
+                    world.addCostume(ImageIO.read(this.getClass().getClassLoader().getResourceAsStream("world/extreme.png")));
+                    world.removeCostume(0);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
+        }
+    }
     public void doHide() throws InterruptedException{
         controls.setVisible(false);
         for (int i = 0;i<5;i++){
@@ -463,13 +499,13 @@ public class gameWindow implements ActionListener{
     }
     public void pipeMove(){
         if (playing){
-            pu1.setLocation((int)pu1.getLocation().getX()-5,(int)pu1.getLocation().getY());
-            pd1.setLocation((int)pd1.getLocation().getX()-5,(int)pd1.getLocation().getY());
-            pu2.setLocation((int)pu2.getLocation().getX()-5,(int)pu2.getLocation().getY());
-            pd2.setLocation((int)pd2.getLocation().getX()-5,(int)pd2.getLocation().getY());
-            pu3.setLocation((int)pu3.getLocation().getX()-5,(int)pu3.getLocation().getY());
-            pd3.setLocation((int)pd3.getLocation().getX()-5,(int)pd3.getLocation().getY());
-            coin.setLocation((int)coin.getLocation().getX()-5,(int)coin.getLocation().getY());
+            pu1.setLocation((int)pu1.getLocation().getX()-gameVars.pipeSpeed,(int)pu1.getLocation().getY());
+            pd1.setLocation((int)pd1.getLocation().getX()-gameVars.pipeSpeed,(int)pd1.getLocation().getY());
+            pu2.setLocation((int)pu2.getLocation().getX()-gameVars.pipeSpeed,(int)pu2.getLocation().getY());
+            pd2.setLocation((int)pd2.getLocation().getX()-gameVars.pipeSpeed,(int)pd2.getLocation().getY());
+            pu3.setLocation((int)pu3.getLocation().getX()-gameVars.pipeSpeed,(int)pu3.getLocation().getY());
+            pd3.setLocation((int)pd3.getLocation().getX()-gameVars.pipeSpeed,(int)pd3.getLocation().getY());
+            coin.setLocation((int)coin.getLocation().getX()-gameVars.pipeSpeed,(int)coin.getLocation().getY());
         }
     }
     @Override
@@ -564,7 +600,11 @@ public class gameWindow implements ActionListener{
     public void showOptions() throws IOException {
         JComboBox<String> gmde = new JComboBox<String>();
         gmde.addItem("Default");
-        ArrayList<File> ff = new ArrayList<File>();
+        if (storeunlocks.contains(7)){
+            gmde.addItem("Extreme");
+        }
+        gmde.setSelectedIndex(gameVars.actgm);
+        ArrayList<File> ff = new ArrayList<>();
         ff.add(new File(this.getClass().getResource("bird/bird.gif").getFile()));
         for (String i : birdpaths){
             ff.add(new File(i));
@@ -592,8 +632,8 @@ public class gameWindow implements ActionListener{
             image = ImageIO.read(new File((gameVars.dataFolder.getPath()+"/flappybird/birds/"+ birdslocs.getSelectedItem()).replace("\\","/")));
         }
         birdpath = (gameVars.dataFolder.getPath()+"/flappybird/birds/"+ birdslocs.getSelectedItem()).replace("\\","/");
-        bird.addCostume(image);
-        bird.removeCostume(0);
-        bird.setCostume(0);
+        bird.replaceCostume(0,image);
+        gameVars.actgm = gmde.getSelectedIndex();
+        updateGameMode();
     }
 }
