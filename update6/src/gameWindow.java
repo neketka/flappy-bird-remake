@@ -10,7 +10,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -130,14 +132,16 @@ public class gameWindow implements ActionListener{
                             try {
                                 birdpaths.add(birdMaker.getNewBird(Color.green, "green"));
                             } catch (IOException e1) {
-                                ExceptionHandler.UseException(e1);
+                                Logger.getInstance().log(e1);
+                                ExceptionHandler.showLog();
                             }
                             break;
                         case 6:
                             try {
                                 birdpaths.add(birdMaker.getNewBird(Color.blue,"blue"));
                             }  catch (IOException e1) {
-                                ExceptionHandler.UseException(e1);
+                                Logger.getInstance().log(e1);
+                                ExceptionHandler.showLog();
                             }
                     }
                     birdpath = birdpaths.get(birdpaths.size() -1);
@@ -213,7 +217,7 @@ public class gameWindow implements ActionListener{
         };
         viewPort.setFocusable(true);
         viewPort.addKeyListener(mainListener);
-        bird = new Sprite(290/2,400/2,26,26,0,ImageIO.read(this.getClass().getResourceAsStream(birdpath)),"bird",true);
+        bird = new Sprite(290/2,400/2,29,26,0,ImageIO.read(this.getClass().getResourceAsStream(birdpath)),"bird",true);
         frame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
@@ -221,7 +225,8 @@ public class gameWindow implements ActionListener{
                 try {
                     exporter.composeExport(gameVars.highscore,storeunlocks,gameVars.actgm,birdpath,gameVars.coinses,birdpaths);
                 } catch (IOException e1) {
-                    ExceptionHandler.UseException(e1);
+                    Logger.getInstance().log(e1);
+                    ExceptionHandler.showLog();
                 }
             }
         });
@@ -275,7 +280,8 @@ public class gameWindow implements ActionListener{
                         spriteCheck();
                         pipeCheck();
                     } catch (Exception e) {
-                        ExceptionHandler.UseException(e);
+                        Logger.getInstance().log(e);
+                        ExceptionHandler.showLog();
                     }
                 }
             }
@@ -311,7 +317,8 @@ public class gameWindow implements ActionListener{
                 try {
                     Thread.sleep(50);
                 } catch (InterruptedException e) {
-                    ExceptionHandler.UseException(e);
+                    Logger.getInstance().log(e);
+                    ExceptionHandler.showLog();
                 }
                     pipeMove();
                 }
@@ -399,8 +406,8 @@ public class gameWindow implements ActionListener{
             case 0:
                 gameVars.pipeSpeed = 5;
                 gameVars.defcc = 3;
-                gameVars.jumpstart = 7.3;
-                gameVars.jumptarget = 12;
+                gameVars.jumpstart = 7.2;
+                gameVars.jumptarget = 11;
                 try {
                     world.addCostume(ImageIO.read(this.getClass().getClassLoader().getResourceAsStream("world/birdplay.png")));
                     world.removeCostume(0);
@@ -411,7 +418,7 @@ public class gameWindow implements ActionListener{
             case 1:
                 gameVars.pipeSpeed = 7;
                 gameVars.defcc = 10;
-                gameVars.jumpstart = 7.2;
+                gameVars.jumpstart = 6.8;
                 gameVars.jumptarget = 20;
                 try {
                     world.addCostume(ImageIO.read(this.getClass().getClassLoader().getResourceAsStream("world/extreme.png")));
@@ -539,7 +546,8 @@ public class gameWindow implements ActionListener{
                 viewPort.setWorld(world);
                 playing = true;
             } catch (InterruptedException e1) {
-                ExceptionHandler.UseException(e1);
+                Logger.getInstance().log(e1);
+                ExceptionHandler.showLog();
             }
         }
 
@@ -568,7 +576,8 @@ public class gameWindow implements ActionListener{
             try {
                 showOptions();
             } catch (IOException e1) {
-                ExceptionHandler.UseException(e1);
+                Logger.getInstance().log(e1);
+                ExceptionHandler.showLog();
             }
         }
 

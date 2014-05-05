@@ -12,10 +12,12 @@ public class Program {
             @Override
             public void run() {
                 try {
-                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                    //UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                    UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
                     new gameWindow();
                 } catch (Exception e) {
-                    ExceptionHandler.UseException(e);
+                    Logger.getInstance().log(e);
+                    ExceptionHandler.showLog();
                 }
             }
         });
